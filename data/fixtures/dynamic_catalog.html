@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="de">
+<head><meta charset="utf-8"><title>Dynamischer synthetischer Testkatalog</title></head>
+<body>
+  <h1>Dynamischer synthetischer Testkatalog</h1>
+  <p>Frei erfundene Daten. JavaScript erzeugt die Tabellenzeilen zeitverzögert.</p>
+  <p id="status" role="status">Daten werden vorbereitet …</p>
+  <table id="catalog" data-synthetic="true">
+    <thead><tr><th>ID</th><th>Titel</th><th>Preis CHF</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  <script>
+    const records = [
+      {id: 1, title: "Testbuch Alpha", price_chf: 12.5},
+      {id: 2, title: "Testbuch Beta", price_chf: 18.0},
+      {id: 3, title: "Testbuch Übermorgen", price_chf: 24.9}
+    ];
+    window.setTimeout(() => {
+      const body = document.querySelector("#catalog tbody");
+      for (const record of records) {
+        const row = document.createElement("tr");
+        for (const [cssClass, value] of [
+          ["id", record.id], ["title", record.title], ["price", record.price_chf.toFixed(2)]
+        ]) {
+          const cell = document.createElement("td");
+          cell.className = cssClass;
+          cell.textContent = String(value);
+          row.appendChild(cell);
+        }
+        body.appendChild(row);
+      }
+      document.querySelector("#status").textContent = "3 Datensätze geladen";
+    }, 400);
+  </script>
+</body>
+</html>

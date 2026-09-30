@@ -1,0 +1,30 @@
+# Persoenliche Konfiguration
+.env
+.env.*
+!.env.example
+
+# Python und Jupyter
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Erzeugte Resultate und Testberichte
+data/output/*
+!data/output/.gitkeep
+tests/reports/
+
+# Dozierendenmaterial wird nicht in das Studierenden-Repo uebernommen.
+instructor/
+**/task_sample_solution.ipynb
+**/WALKTHROUGH.md
+
+# Betriebssystem-Dateien
+.DS_Store
+Thumbs.db
+Desktop.ini

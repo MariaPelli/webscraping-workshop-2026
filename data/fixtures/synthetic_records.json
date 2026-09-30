@@ -1,0 +1,9 @@
+{
+  "synthetic": true,
+  "description": "Ausschliesslich erfundene Testdaten für die technische Einrichtung.",
+  "records": [
+    {"id": 1, "title": "Testbuch Alpha", "price_chf": 12.5},
+    {"id": 2, "title": "Testbuch Beta", "price_chf": 18.0},
+    {"id": 3, "title": "Testbuch Übermorgen", "price_chf": 24.9}
+  ]
+}

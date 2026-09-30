@@ -1,0 +1,18 @@
+# Lokal: Python laeuft in Anaconda, Chromium in diesem Container.
+# Start im Repo-Hauptordner: docker compose up -d
+services:
+  selenium:
+    image: selenium/standalone-chromium:4.48.0-20260905
+    shm_size: 2gb
+    ports:
+      - "127.0.0.1:${SELENIUM_PORT:-4444}:4444"
+    environment:
+      SE_NODE_MAX_SESSIONS: "1"
+      SE_NODE_SESSION_TIMEOUT: "120"
+      SE_SESSION_REQUEST_TIMEOUT: "60"
+    healthcheck:
+      test: ["CMD", "/opt/bin/check-grid.sh", "--host", "127.0.0.1", "--port", "4444"]
+      interval: 10s
+      timeout: 10s
+      retries: 12
+      start_period: 20s

@@ -1,0 +1,30 @@
+# Codespaces: Python-Arbeitsplatz und Browser teilen ein internes Netzwerk.
+# Keine Ports werden auf dem Host veroeffentlicht.
+services:
+  workspace:
+    image: mcr.microsoft.com/devcontainers/python:1-3.12-bookworm
+    command: sleep infinity
+    user: vscode
+    init: true
+    working_dir: /workspaces/webscraping-workshop-2026
+    volumes:
+      - ..:/workspaces/webscraping-workshop-2026:cached
+    environment:
+      SELENIUM_REMOTE_URL: http://selenium:4444
+      PYTHONUNBUFFERED: "1"
+    depends_on:
+      selenium:
+        condition: service_healthy
+  selenium:
+    image: selenium/standalone-chromium:4.48.0-20260905
+    shm_size: 2gb
+    environment:
+      SE_NODE_MAX_SESSIONS: "1"
+      SE_NODE_SESSION_TIMEOUT: "120"
+      SE_SESSION_REQUEST_TIMEOUT: "60"
+    healthcheck:
+      test: ["CMD", "/opt/bin/check-grid.sh", "--host", "127.0.0.1", "--port", "4444"]
+      interval: 10s
+      timeout: 10s
+      retries: 12
+      start_period: 20s
