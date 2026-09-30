@@ -1,17 +1,32 @@
-[Start](README.md) · [Vorbereitung](docs/TECHNISCHE_VORBEREITUNG.md) · [Lokal](docs/setup/LOKAL.md) · [Codespaces](docs/setup/CODESPACES.md) · [Testanleitung](docs/TESTANLEITUNG_ETAPPE1.md) · [Hilfe](docs/TROUBLESHOOTING.md)
+[Start](README.md) · [Vorbereitung](docs/TECHNISCHE_VORBEREITUNG.md) · [Lokal](docs/setup/LOKAL.md) · [Codespaces](docs/setup/CODESPACES.md) · [Demos](demos/README.md) · [Tasks](tasks/README.md) · [Hilfe](docs/TROUBLESHOOTING.md)
 
 # Webscraping – Data Engineering
 
-**Etappe 1: technische Basis zum Testen.** Dieses Zwischenpaket richtet die Arbeitsumgebung ein und prüft sie mit einem ausführbaren Notebook. Die Kurs-Demos, Aufgaben und Musterlösungen folgen in Etappe 2. In den Ordnern `demos/` und `tasks/` findest Du deshalb vorerst nur die geplanten Inhalte.
+**Etappe 2: vier Demos und zwei Aufgaben auf der geprüften technischen Basis.** Du lernst, strukturierte Daten abzurufen, HTML auszulesen und dynamisch erzeugte Inhalte im Browser zu erfassen. Dabei prüfst Du die Ergebnisse und speicherst sie mit nachvollziehbarer Herkunft.
 
-Der spätere Themenblock behandelt strukturierte Datenabrufe, das Auslesen von HTML sowie dynamisch nachgeladene Inhalte. Die technische Basis verwendet Python 3.12, Jupyter, `requests`, BeautifulSoup, `lxml` und Selenium. Chromium läuft in einem eigenen Container. Du musst keinen Browser-Treiber herunterladen.
+Alle Demos und Aufgaben starten mit **mitgelieferten synthetischen Daten**. Diese Daten sind für die Lehre erstellt und keine historischen Downloads von ECB, CoinGecko, Flickr oder Books to Scrape. Live-Abrufe sind bewusst wählbare Ergänzungen; für den Kurskern brauchst Du keine API-Schlüssel. Für die dynamischen Beispiele muss der Selenium-Dienst laufen.
+
+Die technische Basis verwendet weiterhin Python 3.12, Jupyter, `requests`, BeautifulSoup, `lxml` und Selenium. Chromium läuft in einem eigenen Container. Du musst keinen Browser-Treiber herunterladen. Die in Etappe 1 getesteten Abhängigkeiten und Container-Konfigurationen bleiben unverändert.
 
 ## Einstieg
 
-1. Wähle in der folgenden Tabelle Deine Arbeitsumgebung.
-2. Folge der zugehörigen Anleitung bis zum Einrichtungstest.
-3. Öffne [`notebooks/00_setup_check.ipynb`](notebooks/00_setup_check.ipynb) mit dem Kernel **Python (webscraping-workshop)** und führe alle Zellen aus.
-4. Prüfe das Ergebnis mit der [Testanleitung für Etappe 1](docs/TESTANLEITUNG_ETAPPE1.md).
+1. **Schon eingerichtet?** Übernimm die neuen Dateien gemäss [Update auf Etappe 2](docs/UPDATE_ETAPPE2.md). Eine Neuinstallation oder ein Container-Rebuild ist für dieses Update nicht erforderlich.
+2. **Neu dabei?** Wähle unten eine Arbeitsumgebung und folge der [technischen Vorbereitung](docs/TECHNISCHE_VORBEREITUNG.md).
+3. **Bei der ersten Einrichtung:** Öffne [`notebooks/00_setup_check.ipynb`](notebooks/00_setup_check.ipynb) mit dem Kernel **Python (webscraping-workshop)** und führe alle Zellen aus. Der vollständige Test muss `SETUP OK` melden.
+4. Beginne mit den [Demos](demos/README.md) und bearbeite danach die [Tasks](tasks/README.md). Die [Testanleitung für Etappe 2](docs/TESTANLEITUNG_ETAPPE2.md) hilft beim ersten Kontrolllauf.
+
+## Lernweg
+
+| Schritt | Material | Leitfrage |
+|---|---|---|
+| 1 | [Strukturierte Daten: ECB](demos/01_strukturierte_daten_ezb.ipynb) | Wie werden XML-Daten zu einer prüfbaren Tabelle? |
+| 2 | [REST-APIs: CoinGecko und Flickr](demos/02_rest_apis_coingecko_flickr.ipynb) | Wie unterscheiden sich Datenformat, Endpunkt, Parameter und Zugang? |
+| 3 | [HTML mit BeautifulSoup](demos/03_html_beautifulsoup.ipynb) | Wie finde ich wiederkehrende Elemente und weitere Seiten? |
+| 4 | [Task 1: statischer Katalog](tasks/01_statischer_katalog/README.md) | Wie erfasse und prüfe ich selbstständig einen mehrseitigen Datenbestand? |
+| 5 | [Dynamische Seiten mit Selenium](demos/04_dynamische_seiten_selenium.ipynb) | Wie unterscheiden sich Ausgangs-HTML und der durch JavaScript veränderte DOM? |
+| 6 | [Task 2: dynamischer Katalog](tasks/02_dynamischer_katalog/README.md) | Wie warte ich auf Inhalte, lade weitere Einträge und prüfe Vollständigkeit? |
+
+**BeautifulSoup führt kein JavaScript aus.** Selenium steuert einen Browser, der JavaScript ausführen und den DOM verändern kann. BeautifulSoup kann anschliessend auch dieses gerenderte HTML auswerten. Welche Methode Du brauchst, hängt davon ab, wo die Daten tatsächlich vorliegen. Ein leerer Selektor allein beweist nicht, dass eine Website Browserautomatisierung benötigt. Mehr dazu im [didaktischen Überblick](docs/DIDAKTIK.md).
 
 ## Umgebungsvergleich
 
@@ -24,8 +39,8 @@ Der spätere Themenblock behandelt strukturierte Datenabrufe, das Auslesen von H
 | Notebook-Kernel | `Python (webscraping-workshop)` | `Python (webscraping-workshop)` |
 | Selenium und Chromium | `docker compose up -d` im Repo startet den Browser-Container | Selenium startet als Nebendienst des Devcontainers |
 | Adresse für Python | Standard: `http://127.0.0.1:4444`; lokaler Port über `.env` anpassbar | Intern: `http://selenium:4444`; bereits konfiguriert |
-| Portfreigaben | Selenium ist nur an die lokale Loopback-Adresse gebunden | Für die Einrichtungstests sind keine weitergeleiteten oder öffentlichen Ports erforderlich |
-| Internet | Für Einrichtung und optionale Live-Tests; Grundtest arbeitet mit mitgelieferten Daten | Für Codespaces selbst und Einrichtung; Grundtest ruft keine fremde Website ab |
+| Portfreigaben | Selenium ist nur an die lokale Loopback-Adresse gebunden | Für Einrichtungstests und mitgelieferte Kursbeispiele sind keine weitergeleiteten oder öffentlichen Ports erforderlich |
+| Internet | Für Einrichtung und optionale Live-Abrufe; Kurskern arbeitet mit mitgelieferten Daten | Für Codespaces selbst und Einrichtung; Kurskern ruft keine fremde Website ab |
 | Anleitung | [Lokal einrichten](docs/setup/LOKAL.md) | [Codespaces starten](docs/setup/CODESPACES.md) |
 
 **Anaconda führt den Python-Code aus; Docker stellt lokal den automatisierten Browser bereit.** Ein Fenster mit Chromium erscheint beim Test nicht. In Codespaces laufen sowohl Python als auch der Browser in der entfernten Umgebung.
@@ -59,26 +74,30 @@ Der Grundtest benötigt keine API-Schlüssel. Ein vollständiger Erfolg endet mi
 
 ## Orientierung im Repo
 
-| Pfad | Zweck in Etappe 1 |
+| Pfad | Zweck |
 |---|---|
 | [`docs/`](docs/TECHNISCHE_VORBEREITUNG.md) | Vorbereitung, Startanleitungen, Fehlerhilfe und Testablauf |
 | [`notebooks/00_setup_check.ipynb`](notebooks/00_setup_check.ipynb) | Ausführbarer Einrichtungstest |
 | [`scripts/verify_setup.py`](scripts/verify_setup.py) | Derselbe Test im Terminal |
-| [`src/webscraping_workshop/`](src/webscraping_workshop/) | Gemeinsame Prüflogik für Notebook und Terminal |
-| [`data/`](data/) | Synthetische Beispieldaten und lokaler Ausgabeordner |
-| [`demos/`](demos/README.md) | Vorschau auf die Demos der nächsten Etappe |
-| [`tasks/`](tasks/README.md) | Vorschau auf die Aufgaben der nächsten Etappe |
+| [`src/webscraping_workshop/`](src/webscraping_workshop/) | Gemeinsame Prüflogik und Verbindung zum Browser-Dienst |
+| [`data/`](data/README.md) | Synthetische Beispieldaten, Herkunftshinweise und lokaler Ausgabeordner |
+| [`demos/`](demos/README.md) | Vier geführte Beispiele |
+| [`tasks/`](tasks/README.md) | Zwei Aufgaben für die selbstständige Bearbeitung |
 | [`environment.yml`](environment.yml), [`requirements.txt`](requirements.txt) | Python-Umgebung und gemeinsame Abhängigkeiten |
 | [`compose.yaml`](compose.yaml), [`.devcontainer/`](.devcontainer/) | Lokaler Browser-Dienst und Codespaces-Konfiguration |
 
 ## Für die Vorbereitung des Unterrichts
 
-- [Prüfprotokoll und offene Prüfungen](docs/VALIDIERUNG_ETAPPE1.md): tatsächlich ausgeführte Tests und deren Grenzen.
+- [Didaktischer Überblick](docs/DIDAKTIK.md): Lernziele, methodische Unterschiede und Bezug zu den Vorjahresmaterialien.
+- [API-Zugang](docs/API_ZUGANG.md): eigene Schlüssel und bewusst aktivierte Live-Abrufe; für den Kurskern nicht erforderlich.
+- [Update-Anleitung](docs/UPDATE_ETAPPE2.md) und [Testanleitung](docs/TESTANLEITUNG_ETAPPE2.md): neue Dateien übernehmen und Ergebnisse prüfen.
+- [Prüfprotokoll Etappe 2](docs/VALIDIERUNG_ETAPPE2.md): tatsächlich ausgeführte Tests der neuen Materialien und offene Prüfungen.
+- [Prüfprotokoll Etappe 1](docs/VALIDIERUNG_ETAPPE1.md): technische Basis.
 - [Repo auf GitHub bereitstellen](docs/GITHUB_UPLOAD.md): auch `.devcontainer` und weitere Konfigurationsdateien übertragen.
 - [Änderungen](CHANGELOG.md): Stand des Zwischenpakets.
 
-Eigene Ausgaben unter `data/output/`, die lokale `.env` und spätere Musterlösungen werden durch `.gitignore` von neuen Git-Commits ausgeschlossen. Vor dem Teilen von Änderungen prüfst Du dennoch die vorgemerkten Dateien.
+Eigene Ausgaben unter `data/output/`, die lokale `.env` sowie die Dozierendenmaterialien und Musterlösungen werden durch `.gitignore` von neuen Git-Commits ausgeschlossen. `.gitignore` entfernt keine bereits versionierten Dateien. Prüfe vor dem Teilen von Änderungen die vorgemerkten Dateien. Das Repo verändert keine GitHub-Kostenlimits und keine Idle-Timeout-Einstellungen Deines Kontos.
 
 ---
 
-[Nach oben](#webscraping--data-engineering) · [Vorbereitung](docs/TECHNISCHE_VORBEREITUNG.md) · [Lokal](docs/setup/LOKAL.md) · [Codespaces](docs/setup/CODESPACES.md) · [Testanleitung](docs/TESTANLEITUNG_ETAPPE1.md) · [Hilfe](docs/TROUBLESHOOTING.md)
+[Nach oben](#webscraping--data-engineering) · [Vorbereitung](docs/TECHNISCHE_VORBEREITUNG.md) · [Lokal](docs/setup/LOKAL.md) · [Codespaces](docs/setup/CODESPACES.md) · [Demos](demos/README.md) · [Tasks](tasks/README.md) · [Testanleitung](docs/TESTANLEITUNG_ETAPPE2.md) · [Hilfe](docs/TROUBLESHOOTING.md)

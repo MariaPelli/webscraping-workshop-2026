@@ -1,20 +1,20 @@
-[Start](../README.md) · [Vorbereitung](../docs/TECHNISCHE_VORBEREITUNG.md) · [Demos](../demos/README.md)
+[Start](../README.md) · [Vorbereitung](../docs/TECHNISCHE_VORBEREITUNG.md) · [Demos](../demos/README.md) · [Datenbasis](../data/README.md)
 
 # Aufgaben
 
-**In Etappe 1 noch nicht enthalten.** Das aktuelle Paket dient ausschliesslich zur Prüfung der Arbeitsumgebung.
+Die zwei Aufgaben verwenden mitgelieferte **synthetische Katalogdaten** und benötigen keine API-Schlüssel. Öffne jeweils zuerst das README und danach `task.ipynb` mit dem Kernel **Python (webscraping-workshop)**.
 
-Für Etappe 2 sind zwei ausgearbeitete Aufgaben geplant:
+| Aufgabe | Voraussetzung | Ergebnis |
+|---|---|---|
+| [01 – Statischer Katalog](01_statischer_katalog/README.md) | HTML-Demo; Python-Umgebung | Felder extrahieren, mehrere Seiten erfassen, Datenqualität und Vollständigkeit prüfen sowie Ergebnisse exportieren |
+| [02 – Dynamischer Katalog](02_dynamischer_katalog/README.md) | Selenium-Demo; laufender Browser-Dienst | Ausgangs-HTML mit DOM vergleichen, auf Inhalte warten, alle sechs Produkte laden und die Methodenwahl begründen |
 
-| Aufgabe | Geplanter Inhalt |
-|---|---|
-| Task 1 – strukturierte Daten beziehen | Daten abrufen, benötigte Attribute auswählen, Ergebnisse prüfen und exportieren |
-| Task 2 – einen Katalog auslesen | HTML analysieren, mehrere Seiten berücksichtigen und die Vollständigkeit prüfen |
+Die Demos zeigen die Werkzeuge. In den Aufgaben entscheidest Du selbst über passende Selektoren, Prüfkriterien und den Ablauf. Halte auch Deine Antworten auf die Reflexions- und Transferfragen im Notebook fest.
 
-Browserautomatisierung ist als zusätzliche Vertiefung vorgesehen. Jede Kernaufgabe erhält ein eigenes README und Aufgaben-Notebook. Für Dozierende sind ein separates Lösungsnotebook und `WALKTHROUGH.md` direkt im jeweiligen Aufgabenordner vorgesehen. Die Ausschlüsse in `.gitignore` sind bereits vorbereitet; in diesem Zwischenpaket befinden sich noch keine Musterlösungen.
+Beginne mit einem frischen Kernel. Führe die Vorbereitungszellen aus und ergänze die markierten Arbeitsstellen. Das Aufgaben-Notebook ist ein Gerüst: Ohne Deine Bearbeitung soll es noch keine vollständige Lösung erzeugen. Prüfe nach der Bearbeitung durch einen vollständigen Neustart und erneutes Ausführen, ob Deine Lösung ohne versteckten Zustand funktioniert.
 
-Als nächsten Schritt führst Du den [Einrichtungstest](../docs/TESTANLEITUNG_ETAPPE1.md) aus und meldest das Ergebnis zurück.
+Für Task 02 reicht ein erfolgreicher Python-Teiltest nicht. Der vollständige [Einrichtungstest](../notebooks/00_setup_check.ipynb) muss inklusive Browser `SETUP OK` ergeben. Die Aufgaben laufen nacheinander; der Selenium-Dienst ist für eine gleichzeitige Browser-Sitzung eingerichtet.
 
 ---
 
-[Start](../README.md) · [Einrichtungstest](../docs/TESTANLEITUNG_ETAPPE1.md) · [Demos](../demos/README.md)
+[Start](../README.md) · [Demos](../demos/README.md) · [Testanleitung](../docs/TESTANLEITUNG_ETAPPE2.md) · [Datenbasis](../data/README.md)

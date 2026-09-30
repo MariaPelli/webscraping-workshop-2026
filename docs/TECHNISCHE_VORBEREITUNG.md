@@ -43,7 +43,7 @@ Anaconda und Docker auf Deinem eigenen Rechner werden für diesen Weg nicht verw
 | Test im Terminal | `python scripts/verify_setup.py` |
 | Standardbericht | `data/output/setup_report.json` |
 
-Das Testnotebook verwendet ausschliesslich synthetische Daten. Es prüft HTML, JSON, CSV und JavaScript-Inhalte ohne Zugriff auf eine fremde Website. Optional prüft `--online` zusätzlich die Erreichbarkeit ausgewählter späterer Datenquellen. Ein erfolgreicher Grundtest bestätigt diese Live-Erreichbarkeit noch nicht.
+Das Testnotebook verwendet ausschliesslich synthetische Daten. Es prüft HTML, JSON, CSV und JavaScript-Inhalte ohne Zugriff auf eine fremde Website. Optional prüft `--online` zusätzlich die Erreichbarkeit ausgewählter externer Datenquellen. Ein erfolgreicher Grundtest bestätigt diese Live-Erreichbarkeit noch nicht.
 
 ## Wann bist Du bereit?
 

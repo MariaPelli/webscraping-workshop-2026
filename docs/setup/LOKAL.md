@@ -44,7 +44,7 @@ copy .env.example .env
 cp .env.example .env
 ```
 
-Die Voreinstellung `SELENIUM_PORT=4444` reicht normalerweise aus. Passwörter oder API-Schlüssel sind für Etappe 1 nicht erforderlich. Die Datei `.env` bleibt lokal und ist in `.gitignore` eingetragen.
+Die Voreinstellung `SELENIUM_PORT=4444` reicht normalerweise aus. Für den Einrichtungstest und die synthetischen Kursbeispiele sind keine API-Schlüssel erforderlich. Optionale API-Live-Zugänge erklärt [API-Zugang](../API_ZUGANG.md). Die Datei `.env` bleibt lokal und ist in `.gitignore` eingetragen.
 
 ## 3. Python-Umgebung erstellen
 

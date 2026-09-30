@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Synthetischer Produktkatalog – Webscraping</title>
+  <style>
+    body {font-family: system-ui, sans-serif; color:#173046; background:#f1f5f7; max-width:960px; margin:40px auto; padding:0 24px;}
+    h1 {margin-bottom:8px;} .note {background:#d9ecf1; padding:16px; border-left:4px solid #176a7a;}
+    table {border-collapse:collapse; width:100%; background:white; margin:24px 0;}
+    td,th {text-align:left; padding:14px; border-bottom:1px solid #d9e2e8;} th{background:#173046; color:white;}
+    button {padding:12px 24px; background:#176a7a; color:white; border:0; border-radius:4px; cursor:pointer;}
+    button:disabled {background:#738797;cursor:default;} #status {font-weight:600;}
+  </style>
+</head>
+<body>
+  <h1>Produktkatalog</h1>
+  <p class="note">Synthetische Lehrdaten. Alle Produkte und Preise sind frei erfunden.
+    Die Tabellenzeilen entstehen erst durch JavaScript.</p>
+  <p id="status" aria-live="polite">Daten werden geladen …</p>
+  <table id="products" data-total="6" data-mode="synthetic">
+    <thead><tr><th>ID</th><th>Produkt</th><th>Kategorie</th><th>Preis (CHF)</th><th>Verfügbar</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  <button id="load-more" type="button" disabled>Weitere Produkte laden</button>
+  <p>Vergleiche den Seitenquelltext mit dem DOM in den Entwicklertools.</p>
+  <script>
+    // Für eine netzwerkunabhängige Demo liegen die Lehrdaten hier im Skript.
+    // Reale Seiten beziehen solche Daten häufig über einen separaten API-Aufruf.
+    const products = [
+      {id:"P101", name:"Adapter", category:"Zubehör", price:29.90, available:true},
+      {id:"P102", name:"Sensor", category:"Messgeräte", price:39.00, available:true},
+      {id:"P103", name:"Kabel", category:"Zubehör", price:9.50, available:true},
+      {id:"P104", name:"Hub", category:"Zubehör", price:49.00, available:false},
+      {id:"P105", name:"Schalter", category:"Steuerung", price:24.50, available:true},
+      {id:"P106", name:"Lampe", category:"Beleuchtung", price:19.00, available:false}
+    ];
+    const body = document.querySelector("#products tbody");
+    const button = document.querySelector("#load-more");
+    const status = document.querySelector("#status");
+    let shown = 0;
+    function appendBatch() {
+      products.slice(shown, shown + 3).forEach(p => {
+        const row = document.createElement("tr");
+        row.dataset.id = p.id;
+        row.dataset.available = String(p.available);
+        for (const [className, text] of [
+          ["id",p.id], ["name",p.name], ["category",p.category],
+          ["price",p.price.toFixed(2)], ["available",p.available ? "Ja" : "Nein"]
+        ]) {
+          const cell = document.createElement("td");
+          cell.className = className;
+          cell.textContent = text;
+          row.appendChild(cell);
+        }
+        body.appendChild(row);
+      });
+      shown = body.rows.length;
+      status.textContent = `${shown} von ${products.length} Produkten geladen`;
+      button.disabled = shown >= products.length;
+      if (button.disabled) button.textContent = "Alle Produkte geladen";
+    }
+    button.addEventListener("click", () => {
+      button.disabled = true;
+      status.textContent = "Weitere Produkte werden geladen …";
+      setTimeout(appendBatch, 450);
+    });
+    setTimeout(appendBatch, 300);
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "_sample_metadata": {
+    "synthetic": true,
+    "notice": "Vollständig erfundene Workshop-Daten; keine abgerufenen Marktwerte, Fotos oder Personen. Die äussere Hülle gehört zum Workshop, nicht zur Anbieter-API."
+  },
+  "payload": {
+    "photos": {
+      "page": 1,
+      "pages": 1,
+      "perpage": 5,
+      "total": "3",
+      "photo": [
+        {
+          "id": "sample-001",
+          "owner": "sample-owner-001",
+          "title": "Synthetisches Beispiel: Bahnhof Winterthur",
+          "ispublic": 1,
+          "license": "0"
+        },
+        {
+          "id": "sample-002",
+          "owner": "sample-owner-002",
+          "title": "Synthetisches Beispiel: Stadtbibliothek",
+          "ispublic": 1,
+          "license": "0"
+        },
+        {
+          "id": "sample-003",
+          "owner": "sample-owner-001",
+          "title": "Synthetisches Beispiel: Campus",
+          "ispublic": 1,
+          "license": "0"
+        }
+      ]
+    },
+    "stat": "ok"
+  }
+}
