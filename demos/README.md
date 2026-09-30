@@ -13,6 +13,8 @@
 
 Wenn Deine Umgebung aus Etappe 1 bereits vollständig geprüft ist, kannst Du direkt beginnen. Bei einer neuen oder ungeprüften Umgebung führst Du zuerst den [Einrichtungstest](../notebooks/00_setup_check.ipynb) aus. Für Demo 04 muss auch die Browserprüfung erfolgreich sein; `TEILTEST OK` reicht nicht.
 
+**Neue Kursdateien in Codespaces übernehmen:** [Option A: Änderungen behalten / Option B: GitHub-Stand übernehmen](../docs/setup/CODESPACES.md#codespace-mit-github-abgleichen).
+
 ## Worauf Du beim Vergleich achtest
 
 - `requests` liefert die HTTP-Antwort. BeautifulSoup analysiert das übergebene HTML und führt dessen JavaScript nicht aus.

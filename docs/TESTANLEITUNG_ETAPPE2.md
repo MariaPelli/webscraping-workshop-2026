@@ -47,7 +47,7 @@ Prüfe in Task 02 ausdrücklich, dass die Browser-Schritte ausgeführt werden. E
 ## 4. Rückmeldung festhalten
 
 ```text
-Version: 0.2.0-etappe2
+Version: 0.2.1-etappe2
 Umgebung: lokal / Codespaces
 Technische Basis: bereits geprüft / neuer technischer Fehler
 Demo 01 ECB: OK / Fehler

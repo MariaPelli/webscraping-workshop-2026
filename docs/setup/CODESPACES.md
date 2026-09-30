@@ -49,6 +49,36 @@ python scripts/verify_setup.py
 
 Wähle danach den Kernel erneut. Dafür ist normalerweise kein Neustart und kein Rebuild erforderlich. Das Skript repariert die Python-Umgebung; es startet einen ausgefallenen Selenium-Nebendienst nicht neu. Hinweise für diesen gesonderten Fall stehen in der [Fehlerhilfe](../TROUBLESHOOTING.md#selenium-in-codespaces-nicht-erreichbar).
 
+## Codespace mit GitHub abgleichen
+
+Wenn neue Dateien bereits auf GitHub liegen, übernimmst Du sie im **Terminal des bestehenden Codespaces**, im Repo-Hauptordner und auf Branch **`main`**. Speichere und schliesse vorher offene Notebooks. Wähle **eine** der beiden Optionen.
+
+### Option A – eigene Änderungen behalten
+
+```bash
+git pull --ff-only --autostash
+```
+
+Git legt Änderungen an bereits versionierten Dateien vorübergehend ab, holt die neuen Dateien und wendet Deine Änderungen anschliessend wieder an. Selbst angelegte Dateien bleiben erhalten. Dafür brauchst Du keinen eigenen Commit.
+
+Falls Git einen Konflikt oder einen Abbruch meldet, halte an und kläre die Meldung. Bei einem Konflikt beim Wiederanwenden bleiben die Änderungen im Git-Stash gesichert; die Zusammenführung ist dann noch nicht abgeschlossen.
+
+### Option B – lokale Änderungen verwerfen und GitHub-Stand übernehmen
+
+**Damit verwirfst Du lokale Änderungen und setzt den Projektordner auf `origin/main` zurück. Auch lokale Commits werden von diesem Branch entfernt. Selbst angelegte, nicht von Git ignorierte Dateien und Ordner werden gelöscht.**
+
+Führe die drei Befehle nacheinander aus; bei einem Fehler stoppe:
+
+```bash
+git fetch origin
+git reset --hard origin/main
+git clean -fd
+```
+
+Von Git ignorierte Dateien wie Deine `.env` und Ausgaben unter `data/output/` bleiben erhalten. Die installierte Python-Umgebung und der Selenium-Dienst bleiben ebenfalls bestehen. Der Codespace wird dabei nicht neu erstellt.
+
+Für die neuen Demos und Tasks ist kein Rebuild nötig. Öffne danach die aktualisierten Notebooks und starte ihren Kernel neu.
+
 ## Arbeit fortsetzen und beenden
 
 Öffne später denselben Codespace über [github.com/codespaces](https://github.com/codespaces). Erstelle nicht für jede Arbeitssitzung einen neuen. Speichere Deine Dateien und stoppe den Codespace dort, wenn Du fertig bist. Ein geschlossenes Browser-Tab allein ist kein verlässlicher Hinweis, dass der Codespace bereits gestoppt ist.

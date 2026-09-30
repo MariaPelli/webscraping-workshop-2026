@@ -15,6 +15,8 @@ Beginne mit einem frischen Kernel. Führe die Vorbereitungszellen aus und ergän
 
 Für Task 02 reicht ein erfolgreicher Python-Teiltest nicht. Der vollständige [Einrichtungstest](../notebooks/00_setup_check.ipynb) muss inklusive Browser `SETUP OK` ergeben. Die Aufgaben laufen nacheinander; der Selenium-Dienst ist für eine gleichzeitige Browser-Sitzung eingerichtet.
 
+**Neue Kursdateien in Codespaces übernehmen:** [Option A: Änderungen behalten / Option B: GitHub-Stand übernehmen](../docs/setup/CODESPACES.md#codespace-mit-github-abgleichen).
+
 ---
 
 [Start](../README.md) · [Demos](../demos/README.md) · [Testanleitung](../docs/TESTANLEITUNG_ETAPPE2.md) · [Datenbasis](../data/README.md)

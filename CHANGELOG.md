@@ -2,6 +2,13 @@
 
 # Änderungen
 
+## 0.2.1-etappe2 – 30.09.2026
+
+- Codespaces-Abgleich in README und Codespaces-Anleitung ergänzt: Option A behält eigene Änderungen mit einem Befehl; Option B übernimmt den GitHub-Stand und entfernt zusätzliche, nicht ignorierte Dateien mit drei Befehlen.
+- Update-Anleitung, technische Vorbereitung, Demos, Tasks und Fehlerhilfe verweisen auf dieselben Optionen.
+- Grenzen bei Git-Konflikten sowie der Erhalt von `.env`, Ausgaben und installierter Umgebung erklärt.
+- Nur Dokumentation und Versionsstand geändert; Notebooks, Python-Pakete und Container-Konfiguration bleiben unverändert.
+
 ## 0.2.0-etappe2 – 30.09.2026
 
 - Vier ausgearbeitete Demos: EZB-XML, CoinGecko/Flickr REST APIs, BeautifulSoup und Selenium.

@@ -32,6 +32,8 @@ Anaconda und Docker auf Deinem eigenen Rechner werden für diesen Weg nicht verw
 
 **Weiter: [Codespaces starten](setup/CODESPACES.md).**
 
+**Bereits eingerichtet?** [Codespace mit GitHub abgleichen](setup/CODESPACES.md#codespace-mit-github-abgleichen): Option A behält Deine Änderungen, Option B verwirft sie.
+
 ## Einheitliche Namen
 
 | Bestandteil | Name |

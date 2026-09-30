@@ -8,6 +8,7 @@ Führe Befehle im Repo-Hauptordner aus. Beginne bei der ersten fehlgeschlagenen 
 
 | Meldung oder Beobachtung | Nächster Schritt |
 |---|---|
+| Neue Demos oder Tasks fehlen im Codespace; `git pull` meldet lokale Änderungen | [Codespace abgleichen: Option A behält Änderungen, Option B verwirft sie](setup/CODESPACES.md#codespace-mit-github-abgleichen). |
 | `conda` nicht gefunden | Unter Windows Anaconda Prompt verwenden; unter macOS/Linux ein Terminal mit initialisiertem Conda öffnen. Codespaces verwendet kein Conda. |
 | `environment.yml` oder `scripts/verify_setup.py` nicht gefunden | In den inneren Repo-Ordner wechseln, nicht im ZIP oder dessen äusserem Entpackordner arbeiten. |
 | `ModuleNotFoundError` | Richtige Umgebung aktivieren bzw. richtigen Notebook-Kernel auswählen. Siehe unten. |

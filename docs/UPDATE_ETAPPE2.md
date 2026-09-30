@@ -12,7 +12,7 @@ Die technische Basis aus Etappe 1 wurde lokal in JupyterLab und in GitHub Codesp
 2. Entpacke das neue ZIP in einen vorübergehenden Ordner.
 3. Kopiere den Inhalt des darin enthaltenen Repo-Hauptordners in Deinen **bestehenden** Repo-Hauptordner. Achte darauf, keinen zusätzlichen verschachtelten Ordner anzulegen.
 4. Ersetze die aktualisierten Projektdateien. Behalte Deinen vorhandenen `.git`-Ordner und Deine lokale `.env`. Lösche Deinen bisherigen Repo-Ordner nicht.
-5. Prüfe `VERSION` und das [Changelog](../CHANGELOG.md). Etappe 2 trägt die Version `0.2.0-etappe2`.
+5. Prüfe `VERSION` und das [Changelog](../CHANGELOG.md). Der aktuelle Stand trägt die Version `0.2.1-etappe2`.
 
 Ein Dozierendenpaket kann zusätzlich `instructor/` und die Lösungsdateien in den Task-Ordnern enthalten. Die `.gitignore` schliesst diese aus; sie sollen nicht versehentlich im Studierenden-Repo veröffentlicht werden.
 
@@ -64,8 +64,8 @@ Wenn die Änderungen stimmen:
 
 ```bash
 git add .
-git diff --cached --stat
-git diff --cached --name-only
+git --no-pager diff --cached --stat
+git --no-pager diff --cached --name-only
 ```
 
 Kontrolliere die vorgemerkte Liste: keine `.env`, keine erzeugten Ausgaben, kein `instructor/`, keine `task_sample_solution.ipynb` und keine `WALKTHROUGH.md`. Danach:
@@ -79,25 +79,12 @@ Falls noch kein GitHub-Repo besteht, nutze stattdessen die [Anleitung zur erstma
 
 ## 5. Bestehenden Codespace aktualisieren
 
-Speichere Deine Arbeiten im Codespace und prüfe zuerst dessen Arbeitsverzeichnis:
+Öffne das Terminal im bestehenden Codespace. Die [kurze Codespaces-Anleitung](setup/CODESPACES.md#codespace-mit-github-abgleichen) bietet zwei Möglichkeiten:
 
-```bash
-cd /workspaces/webscraping-workshop-2026
-git status
-```
+- **Option A – Änderungen behalten:** ein Befehl; Deine Änderungen werden vorübergehend gesichert und danach wieder angewendet.
+- **Option B – GitHub-Stand übernehmen:** drei Befehle; lokale Änderungen werden verworfen und zusätzliche, nicht ignorierte Dateien gelöscht. `.env`, erzeugte Ausgaben und die installierte Umgebung bleiben erhalten.
 
-Wenn dort eigene Änderungen liegen, sichere bzw. committe sie bewusst, bevor Du den Stand von GitHub übernimmst. Überschreibe sie nicht mit einem harten Reset. Bei einem sauberen Arbeitsverzeichnis:
-
-```bash
-git pull --ff-only
-source /home/vscode/.venvs/webscraping-workshop/bin/activate
-```
-
-Falls Git unterschiedliche lokale und entfernte Änderungen meldet, halte an und kläre diese Unterschiede. Ersetze `--ff-only` nicht unbesehen durch erzwungene Befehle.
-
-Starte anschliessend die Notebook-Kernel frisch und führe die neuen Demos nacheinander aus. Der Selenium-Nebendienst und die interne Adresse bleiben bestehen; es werden keine zusätzlichen Ports freigegeben. Eine lokal ergänzte `.env` wird nicht mitgepusht: Für optionale Live-Abrufe im Codespace trägst Du eigene Schlüssel dort separat ein.
-
-Auch im bereits geprüften Codespace ist keine erneute Setup-Prüfung nötig. Verwende `python scripts/verify_setup.py` nur bei technischen Problemen oder wenn der Zustand der Umgebung unklar ist.
+Starte anschliessend die Notebook-Kernel frisch und führe die neuen Demos nacheinander aus. Ein Rebuild oder eine erneute Setup-Prüfung ist für dieses Update nicht nötig. Für optionale Live-Abrufe ergänzt Du Deine Schlüssel in der `.env` des Codespaces separat.
 
 ---
 
